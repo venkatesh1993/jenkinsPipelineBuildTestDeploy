@@ -5,20 +5,13 @@ node('master') {
          echo 'checkout done'
 
    stage('Maven Build'){
-      echo 'Maven Project Compile'
-      steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
-            }
-      steps{
-        sh 'mvn install' 
+      echo 'Maven Project Build'
+      maven 'clean install'
       } 
       post {
           success {
               junit 'target/surefire-reports/**/*.xml' 
-          }
+           }
       }
    }
 
