@@ -13,8 +13,6 @@ node('master') {
               junit 'target/surefire-reports/**/*.xml' 
            }
       }
-   }
-
 
    stage 'Test Case'
         echo 'Test Case will running'
